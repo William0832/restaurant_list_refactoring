@@ -8,7 +8,7 @@
       <div class="text-left d-flex mb-2">
         <a href="/" class="btn btn-light btn-sm border-dark">Back</a>
         <a href=" /edit/{{restaurant._id}}" class="btn btn-sm btn-secondary border-dark ml-2">Edit</a>
-        <form action="/delete/{{restaurant._id}}" method="post">
+        <form action="/delete/{{restaurant._id}}?_method=DELETE" method="post">
 
           {{!-- modal box --}}
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

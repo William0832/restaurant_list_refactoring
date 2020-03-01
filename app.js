@@ -37,7 +37,7 @@ db.once('open', () => {
 // 載入 restaurant modle
 const Restaurant = require('./models/restaurant.js')
 
-// set rout
+// set routes
 // show all restaurants
 app.get('/', (req, res) => {
   Restaurant.find()
@@ -73,6 +73,7 @@ app.post('/new', (req, res) => {
     return res.redirect('/')
   })
 })
+
 // show specific restaurant
 app.get('/restaurants/:id', (req, res) => {
   Restaurant.findById(req.params.id)
@@ -82,7 +83,8 @@ app.get('/restaurants/:id', (req, res) => {
       return res.render('show', { restaurant })
     })
 })
-// edit - show new page
+
+// edit - show edit page
 app.get('/edit/:id', (req, res) => {
   Restaurant.findById(req.params.id)
     .lean()
@@ -92,7 +94,7 @@ app.get('/edit/:id', (req, res) => {
     })
 })
 // edit - 處理db & 顯示結果
-app.post('/edit/:id', (req, res) => {
+app.put('/edit/:id', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.name = req.body.name
@@ -110,8 +112,9 @@ app.post('/edit/:id', (req, res) => {
     })
   })
 })
+
 // delete
-app.post('/delete/:id', (req, res) => {
+app.delete('/delete/:id', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.remove(err => {
@@ -120,6 +123,7 @@ app.post('/delete/:id', (req, res) => {
     })
   })
 })
+
 // search
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
