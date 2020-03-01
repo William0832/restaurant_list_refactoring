@@ -29,7 +29,7 @@
     <div class="col-md-10 col-12 mx-auto">
 
       {{!-- create new one --}}
-      <a class="btn btn-warning border-dark my-3" href="/new">Create</a>
+      <a class="btn btn-warning border-dark my-3" href="/restaurants/new">Create</a>
       <div class="card-columns">
         {{!-- each loop --}}
         {{#each restaurants}}
@@ -52,8 +52,8 @@
           </a>
           {{!--buttons --}}
           <div class="text-right m-2 d-flex">
-            <a href="/edit/{{{this._id}}}" class="btn btn-sm btn-secondary border-dark mr-2">Edit</a>
-            <form action="/delete/{{{this._id}}}?_method=DELETE" method="post">
+            <a href="/restaurants/edit/{{{this._id}}}" class="btn btn-sm btn-secondary border-dark mr-2">Edit</a>
+            <form action="/restaurants/delete/{{{this._id}}}?_method=DELETE" method="post">
               <button type="button" class="btn btn-sm btn-dark text-white" data-toggle="modal"
                 data-target="#id{{this._id}}">
                 Delete
