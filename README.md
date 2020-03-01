@@ -12,8 +12,8 @@
 [express](https://expressjs.com/)  
 [express-handlebars](https://www.npmjs.com/package/express-handlebars)  
 [body-parser](https://www.npmjs.com/package/body-parser)  
-[mongoose](https://www.npmjs.com/package/mongoose)
-[method-override](https://www.npmjs.com/package/method-override)
+[mongoose](https://www.npmjs.com/package/mongoose)    
+[method-override](https://www.npmjs.com/package/method-override)    
 
 ## 功能表
 
