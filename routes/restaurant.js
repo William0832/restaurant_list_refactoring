@@ -89,20 +89,4 @@ router.delete('/delete/:id', (req, res) => {
   })
 })
 
-// search
-router.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  Restaurant.find()
-    .lean()
-    .exec((err, restaurants) => {
-      if (err) return console.error(err)
-      const results = restaurants.filter(
-        item =>
-          item.name.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.category.toLowerCase().includes(keyword.toLowerCase())
-      )
-      res.render('index', { restaurants: results, keyword })
-    })
-})
-
 module.exports = router
