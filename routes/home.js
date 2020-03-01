@@ -6,43 +6,37 @@ const sortList = [
     id: 0,
     name: 'A-Z',
     type: 'name',
-    value: 'asc',
-    isUsed: false
+    value: 'asc'
   },
   {
     id: 1,
     name: 'Z-A',
     type: 'name',
-    value: 'desc',
-    isUsed: false
+    value: 'desc'
   },
   {
     id: 2,
     name: '類別',
     type: 'category',
-    value: 'asc',
-    isUsed: false
+    value: 'asc'
   },
   {
     id: 3,
     name: '地區',
     type: 'location',
-    value: 'asc',
-    isUsed: false
+    value: 'asc'
   },
   {
     id: 4,
     name: '評分-升冪',
     type: 'rating',
-    value: 'asc',
-    isUsed: false
+    value: 'asc'
   },
   {
     id: 5,
     name: '評分-降冪',
     type: 'rating',
-    value: 'desc',
-    isUsed: false
+    value: 'desc'
   }
 ]
 
@@ -50,10 +44,11 @@ const sortList = [
 router.get('/', (req, res) => {
   // 存入keyword
   const keyword = req.query.keyword
+  // 將keyword 存入 sortList
+  sortList.forEach(item => (item['keyword'] = keyword))
   // 存入sort 類型
-  const sortId = req.query.sortId
+  const sortId = req.query.sortId || 0
   const sort = sortList[Number(sortId)]
-  sort.isUsed = true
   const sortOption = { [sort.type]: [sort.value] }
   // 篩選資料
   Restaurant.find()
@@ -69,7 +64,7 @@ router.get('/', (req, res) => {
             item.category.toLowerCase().includes(keyword.toLowerCase())
         )
       }
-      return res.render('index', { sortId, sortList, keyword, restaurants })
+      return res.render('index', { keyword, sortList, restaurants })
     })
 })
 module.exports = router
