@@ -1,36 +1,49 @@
 <link rel="stylesheet" href="/stylesheets/index.css">
 
-
-<!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search" method="GET">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
-
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button">
-              <i class="fas fa-search"></i>
-            </button>
+<div class="container d-flex justify-content-between">
+  <!-- search bar -->
+  <div class=" search-bar col-auto">
+    <div class="search-bar-outer">
+      <div class="search-bar-inner">
+        <form action="/restaurants/search" method="GET">
+          <h4 class="mb-2">尋找餐廳：</h4>
+          <div class="input-group">
+            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+              value="{{keyword}}" aria-describedby="search-button">
+            <div class="input-group-append">
+              <button class="btn btn-major" type="submit" id="search-button">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{!-- Sort dropdown list --}}
+  <div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      Sort
+    </a>
 
-        </div>
-      </form>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="#">A-Z</a>
+      <a class="dropdown-item" href="#">Z-A</a>
+      <a class="dropdown-item" href="#">類別</a>
+      <a class="dropdown-item" href="#">地區</a>
+
     </div>
   </div>
 </div>
 
-{{!-- list --}}
+
+{{!-- show list --}}
 <div class="container mt-2">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
 
-      {{!-- create new one --}}
-      <a class="btn btn-warning border-dark my-3" href="/restaurants/new">Create</a>
-      <div class="card-columns">
+      <div class="card-columns mt-4">
         {{!-- each loop --}}
         {{#each restaurants}}
         <div class="card ">

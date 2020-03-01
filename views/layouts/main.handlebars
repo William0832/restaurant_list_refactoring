@@ -23,14 +23,20 @@
             width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
           我的餐廳清單
         </a>
+        <a class="btn btn-warning border-dark my-3" href="/restaurants/new">Create</a>
+
       </div>
     </nav>
 
     <div class="banner"></div>
   </header>
 
-  {{!-- partial template --}}
-  {{{ body }}}
+  <main>
+    <div class="container mt-3">
+      {{{body}}}
+
+    </div>
+  </main>
 
   {{!-- include JS files --}}
   <script src="/javascript/jquery-3.3.1.js"></script>
