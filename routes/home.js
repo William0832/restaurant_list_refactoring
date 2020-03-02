@@ -44,13 +44,11 @@ const sortList = [
 router.get('/', (req, res) => {
   // 存入keyword
   const keyword = req.query.keyword
-  // 將keyword 存入 sortList
-  sortList.forEach(item => (item['keyword'] = keyword))
   // 存入sort 類型
   const sortId = req.query.sortId || 0
   const sort = sortList[Number(sortId)]
   const sortOption = { [sort.type]: [sort.value] }
-  // 篩選資料
+  // 篩選&編排資料
   Restaurant.find()
     .sort(sortOption)
     .lean()
@@ -64,7 +62,7 @@ router.get('/', (req, res) => {
             item.category.toLowerCase().includes(keyword.toLowerCase())
         )
       }
-      return res.render('index', { keyword, sortList, restaurants })
+      return res.render('index', { sortId, keyword, sortList, restaurants })
     })
 })
 module.exports = router
